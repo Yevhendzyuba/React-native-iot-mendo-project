@@ -7,6 +7,20 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import  { Header,Card } from "react-native-elements";
 
 
+/*
+import = as firebase from 'firebase';
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBB0gI-ksLM-urexYi-vxYCIoNWpaDjpjQ",
+    authDomain: "mendo-project-4bb25.firebaseapp.com",
+    databaseURL: "https://mendo-project-4bb25.firebaseio.com",
+    projectId: "mendo-project-4bb25",
+    storageBucket: "mendo-project-4bb25.appspot.com",
+
+  };
+
+  firebase.initializeApp(firebaseConfig);
+*/
 export default class App extends React.Component {
   render() {
     return (
