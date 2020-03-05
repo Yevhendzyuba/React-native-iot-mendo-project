@@ -8,10 +8,10 @@ npm install react-native -g expo cli <----
 
 Secondly you must to install all libraries such as (if you have troubles,react-native will help you and wrote in terminal what libraries to install) the main libraries ---->: 
 
-npm install react-navigation
-npm install react-native-elements
-npm install react-navigation-stack
-npm install react-navigation-tabs
+npm install react-navigation ; 
+npm install react-native-elements ; 
+npm install react-navigation-stack ; 
+npm install react-navigation-tabs ; 
 
 After you must to open xcode emulator and open atom/sublime.
 
