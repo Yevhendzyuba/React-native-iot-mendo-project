@@ -1,0 +1,10 @@
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 19641,
+  "expoServerNgrokUrl": "https://ej-awi.anonymous.projects.exp.direct",
+  "packagerNgrokUrl": "https://packager.ej-awi.anonymous.projects.exp.direct",
+  "ngrokPid": 19666,
+  "webpackServerPort": 19006
+}

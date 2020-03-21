@@ -5,22 +5,14 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer,createSwitchNavigator } from 'react-navigation';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import  { Header,Card } from "react-native-elements";
+import { widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+  listenOrientationChange as loc,
+  removeOrientationListener as rol} from 'react-native-responsive-screen';
 
 
-/*
-import = as firebase from 'firebase';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBB0gI-ksLM-urexYi-vxYCIoNWpaDjpjQ",
-    authDomain: "mendo-project-4bb25.firebaseapp.com",
-    databaseURL: "https://mendo-project-4bb25.firebaseio.com",
-    projectId: "mendo-project-4bb25",
-    storageBucket: "mendo-project-4bb25.appspot.com",
 
-  };
-
-  firebase.initializeApp(firebaseConfig);
-*/
 export default class App extends React.Component {
   render() {
     return (
@@ -30,17 +22,24 @@ export default class App extends React.Component {
 }
 
 class List extends React.Component {
+  componentDidMount() {
+    loc(this);
+  }
+
+  componentWillUnMount() {
+    rol();
+  }
   render(){
     return (
 
-    <View style={{flex: 1,backgroundColor:"#f2f2f2"}}>
+    <View style={{flex: 1,backgroundColor:"#f2f2f2",width:wp('100%'),height:hp('100%')}}>
             <Header
                 leftContainerStyle={styles.headerLeftContainerStyle}
                 containerStyle={styles.headerContainerStyle}
                 rightContainerStyle={styles.headerRightContainerStyle}
                 rightComponent={<Icon name="search" size={25} color="white"/>}>
 
-                  <Icon name="sliders-h" style={styles.slidersIcon} size={25} color="white"/>
+                 <Icon name="sliders-h" style={styles.slidersIcon} size={25} color="white"/>
                         <View style={{flexDirection:"row",}}>
                               <TouchableOpacity style={styles.headerButtonFirst}>
                     <Icon name="users" style={styles.headerIconUsers} size={18} color="#545454"/>
@@ -54,10 +53,11 @@ class List extends React.Component {
                      <Icon name="map-marker-alt" style={styles.headerIconMap} size={18} color="#545454"/>
                      <Text style={styles.headerTextButtonThird}>Lviv</Text>
                                             </TouchableOpacity>
+
                                       </View>
                                                 </Header>
 <ScrollView style={styles.scrollpage}>
-  <View style={{flex:1,marginTop:35,backgroundColor:"#f2f2f2"}}>
+  <View style={{flex:1,marginTop:35,backgroundColor:"#f2f2f2",width:wp('100%'),height:hp('100%')}}>
                   <TouchableOpacity  onPress={() =>
                                   this.props.navigation.navigate('ItemRestarauntFirst')}>
                   <View style={{flexDirection:"row",marginBottom:25,backgroundColor:"white"}}>
@@ -81,9 +81,7 @@ class List extends React.Component {
                       <TouchableOpacity style={styles.buttonBlockSecond}>
              <Text style={styles.buttonBlockText}>11:00</Text>
                                         </TouchableOpacity>
-                      <TouchableOpacity style={styles.buttonBlockThird}>
-                        <Text style={styles.buttonBlockText}>13:00</Text>
-                                          </TouchableOpacity>
+
                                       </View>
 
 
@@ -127,9 +125,7 @@ class List extends React.Component {
     <TouchableOpacity style={styles.buttonBlockSecond}>
   <Text style={styles.buttonBlockText}>11:00</Text>
                       </TouchableOpacity>
-    <TouchableOpacity style={styles.buttonBlockThird}>
-      <Text style={styles.buttonBlockText}>13:00</Text>
-                        </TouchableOpacity>
+
                     </View>
 
 
@@ -165,9 +161,7 @@ class List extends React.Component {
   <TouchableOpacity style={styles.buttonBlockSecond}>
   <Text style={styles.buttonBlockText}>11:00</Text>
                     </TouchableOpacity>
-  <TouchableOpacity style={styles.buttonBlockThird}>
-    <Text style={styles.buttonBlockText}>13:00</Text>
-                      </TouchableOpacity>
+
                   </View>
 
 
@@ -195,8 +189,9 @@ class List extends React.Component {
  class MyBookings extends React.Component {
   render() {
     return (
-<View style= {styles.MyBookings}>
+<View style={{ flex: 1, justifyContent: "center", alignItems: "center",backgroundColor:"#f2f2f2", }}>
 
+<Text style={styles.textmybook}>MyBookings page</Text>
 
         </View>
 
@@ -209,17 +204,25 @@ class List extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center",backgroundColor:"#f2f2f2", }}>
-        <Text>New Page2</Text>
+        <Text>My Profile Page</Text>
       </View>
     );
   }
 }
 
 class ItemRestarauntFirst extends React.Component {
+  componentDidMount() {
+    loc(this);
+  }
+
+  componentWillUnMount() {
+    rol();
+  }
  render() {
    return (
 <ScrollView style={styles.scroll}>
-     <View style={{backgroundColor:"#E9E9E9",flex:1}}>
+<View style={styles.rspg}>
+     <View style={{backgroundColor:"#E9E9E9",flex:1,width:wp('100%'),height:hp('100%')}}>
 
 
 
@@ -249,7 +252,7 @@ class ItemRestarauntFirst extends React.Component {
 
 
 
-     <View style={{flexDirection:"row",}}>
+     <View style={{flexDirection:"row"}}>
             <TouchableOpacity style={styles.restpagebutton}>
               <Icon name="users" style={styles.restpageuser} size={15} color="#545454"/>
                  <Text style={styles.restpagetext}>6x</Text>
@@ -345,7 +348,7 @@ class ItemRestarauntFirst extends React.Component {
   </View>
 
 
-
+</View>
 </ScrollView>
 
 
@@ -417,16 +420,21 @@ const styles = StyleSheet.create({
   headerContainerStyle: {
     backgroundColor: "#ff1a40",
     height:130,
+
   },
   headerLeftContainerStyle: {
     alignSelf:"baseline",
     marginLeft:15,
     marginTop:10,
+    width:wp('100%'),
+    height:hp('100%')
   },
   headerRightContainerStyle: {
     alignSelf:"baseline",
     marginRight:15,
     marginTop:10,
+    width:wp('100%'),
+    height:hp('100%')
   },
   slidersIcon: {
     alignSelf:"flex-start",
@@ -468,8 +476,8 @@ const styles = StyleSheet.create({
   },
 
   headerIconUsers: {
-marginTop:10,
-marginLeft:10,
+    marginTop:10,
+    marginLeft:10,
   },
   headerTextButtonFirst:{
     color:"#545454",
@@ -486,7 +494,6 @@ marginLeft:10,
     color:"#545454",
     fontSize:13,
     marginLeft:10,
-
     alignSelf:"center",
 
   },
@@ -515,6 +522,7 @@ marginLeft:10,
     marginTop:32,
     marginBottom:35,
     borderRadius:10,
+
   },
   majorBlockText: {
     fontSize:17,
@@ -531,7 +539,8 @@ marginLeft:10,
   infoBlockText:{
     fontSize:12,
     color:"black",
-    marginLeft:35,
+    marginLeft:60,
+    flex:1,
 
 },
 
@@ -542,7 +551,7 @@ marginLeft:10,
     height:27,
     marginRight:10,
     marginLeft:36,
-    marginTop:13
+
   },
   buttonBlockSecond: {
     backgroundColor:"red",
@@ -550,14 +559,14 @@ marginLeft:10,
     width:97,
     height:27,
     marginRight:10,
-    marginTop:13,
+
   },
   buttonBlockThird: {
     backgroundColor:"red",
     borderRadius:13,
     width:97,
     height:27,
-    marginTop:13
+    marginTop:13,
   },
   buttonBlockText: {
     color:"white",
@@ -714,8 +723,23 @@ restdescription:{
   width: 300,
  height: 265,
 
-}
+},
+iconclock:{
+  marginLeft:25,
+  marginTop:30,
+},
+textmybook:{
+  color:'black',
 
+},
+rspg:{
+  width:wp('100%'),
+  height:hp('100%'),
+},
+scroll:{
+  width:wp('100%'),
+  height:hp('100%'),
+}
 });
 
 
